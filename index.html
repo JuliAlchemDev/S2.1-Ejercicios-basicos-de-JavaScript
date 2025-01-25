@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>S2.1. Exercicis bàsics JavaScript</title>
+  </head>
+  <body>
+    <header>
+      <h1>S2.1. Ejercicios básicos de JavaScript</h1>
+      <ul>
+        <li><a href="#ArrowFunctions">Arrow Functions</a></li>
+        <li><a href="#TernaryOperator">Ternary Operator</a></li>
+        <li><a href="#Callbacks">Callbacks</a></li>
+        <li><a href="#RestSpreadOperators">Rest & Spread Operators</a></li>
+        <li><a href="#ArrayTransformations">Array Transformations</a></li>
+        <li><a href="#ArrayLoops">Array Loops</a></li>
+        <li><a href="#PromisesAsync/Await">Promises & Async/Await</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <section id="ArrowFunctions">
+        <h2>Arrow Functions</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Tienes una función add que acepta dos parámetros y retorna su
+          suma. Convierte esa función en una función de flecha. Por ejemplo:
+          function add(a, b) {return a + b;}.
+        </p>
+        <pre><code>
+    const add = (a, b) => { 
+        return a+b; 
+        };
+            </code></pre>
+        <p>
+          Ex 2: Función de flecha sin parámetros: Crea una función de flecha
+          llamada randomNumber que no necesite parámetros y que retorne un
+          número aleatorio entre 0 y 100.
+        </p>
+        <pre><code> 
+    const randomNumber = () => { 
+        return Math.floor((Math.random())*101) 
+    };
+            </code></pre>
+        <p>
+          Ex 3: Uso de 'this' en las funciones de flecha: Crea una clase Person
+          que tenga una propiedad name y una función greet que utilice una
+          función de flecha. La función debe imprimir un saludo que incluya el
+          nombre de la persona. Por ejemplo: console.log('Hola, ${this.name}');.
+        </p>
+        <pre><code>
+    class Person { 
+        constructor(name) {
+            this.name = name; 
+            }; 
+        greet = () => { 
+            console.log(`Hola, ${this.name}`); 
+        };
+    };
+            </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 4: Función de flecha dentro de un bucle: Crea una función llamada
+          printNumbers que acepte un array de números y utilice un bucle for
+          para imprimir cada número en la consola utilizando una función de
+          flecha.
+        </p>
+        <pre><code>
+    const printNumbers = (arr) => { 
+        for (let i = 0; i < arr.length; i++) { 
+            console.log(arr[i]); 
+        };
+    }; 
+    printNumbers([1, 2, 3]);
+            </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 5: Función de flecha con 'setTimeout': Crea una función de flecha
+          que imprima un mensaje en la consola después de esperar 3 segundos.
+        </p>
+        <pre><code>
+    const mgs = () => { 
+        setTimeout(()=> { 
+            console.log('Hello World!'); 
+        }, 3000); 
+    };
+            </code></pre>
+      </section>
+
+      <section id="TernaryOperator">
+        <h2>Ternary Operator</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Operador ternario básico: Escribe una función puedeConducir que
+          acepte la edad como parámetro y utilice el operador ternario para
+          determinar si el usuario puede conducir. Si la edad es 18 o más, debe
+          retornar 'Puedes conducir'. Si no, debe retornar 'No puedes conducir'.
+        </p>
+        <pre><code>
+    const canDrive = (age) => {
+        return age >= 18 ? 'You already can Drive!' 
+             'Sorry, you can\'t...';
+    };
+        </code></pre>
+        <p>
+          Ex 2: Uso con operadores de comparación: Escribe una expresión que
+          utilice el operador ternario para determinar cuál de los dos números
+          dados (num1 y num2) es el más grande. Si num1 es más grande, retorna
+          'num1 es más grande'. Si no, retorna 'num2 es más grande'.
+        </p>
+        <pre><code>
+    const largerNumber = (num1, num2) => {
+        return num1 > num2 ? 
+            'The first number is larger than second' 
+            : 'The second number is larger than first';
+    };
+            </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 3: Uso encadenado de operadores ternarios: Escribe una expresión
+          que utilice encadenamientos de operadores ternarios para determinar si
+          un número es positivo, negativo o cero.
+        </p>
+        <pre><code>
+    const typeOfNumber = (num) => {
+        return num == 0 
+            ? 'It\'s zero!' 
+            : num < 0 ? 'It\'s negative!' 
+            : 'It\'s positive!'
+    }
+            </code></pre>
+        <p>
+          Operador ternario con funciones: Crea una función encontrarMaximo que
+          acepte tres parámetros (a, b, c) y utilice el operador ternario para
+          determinar el valor máximo.
+        </p>
+        <pre><code>
+ const largestNumber = (a, b ,c) => {
+    return a > b && a > c 
+        ? `${a} ${b} ${c}... The first num is the largest` 
+        : b > a && b > c 
+        ? `${a} ${b} ${c}... The second num is the largest` 
+        : `${a} ${b} ${c}... The third num is the largest!`
+ };
+            </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 4: Operador ternario dentro de un bucle: Escribe una función
+          parOImpar que acepte un array de números y utilice un bucle para
+          recorrer el array. Dentro del bucle, utiliza el operador ternario para
+          determinar si cada número es par o impar.
+        </p>
+        <pre><code>
+    const evenOrOdd = (numbers) => {
+        for (let i = 0; i < numbers.length; i++) {      
+            numbers[i] % 2 == 0 
+            ? console.log(`${numbers[i]} is even`)
+            : console.log(`${numbers[i]} is odd`);
+        };
+    };
+            </code></pre>
+      </section>
+      <section id="Callbacks">
+        <h2>Callbacks</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Callback básico: Escribe una función llamada procesar que acepte
+          dos parámetros: un número y una función de callback. La función
+          procesar debe invocar la función de callback, pasando el número como
+          parámetro.
+        </p>
+        <pre><code>
+    const procesar = (num, callback) => {
+        return callback(num);
+    };
+    const getNum = (num) => {
+        console.log("Your number is " + num);
+    };
+    procesar(9, getNum);
+        </code></pre>
+        <p>
+          Ex 2: Callbacks con operaciones matemáticas: Escribe una función
+          calculadora que acepte tres parámetros: dos números y una función de
+          callback. La función calculadora debe invocar la función de callback
+          con los dos números como parámetros. Luego, llama a calculadora con
+          una función que haga la suma de los dos números.
+        </p>
+        <pre><code>
+    const calculator = (num1, num2, callback) => {
+        return callback(num1, num2);
+    };
+    const calcSum = (num1, num2) => {
+        console.log(num1 + num2);
+    };
+    calculator(2, 4, calcSum);
+        </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 3: Uso de callbacks en funciones asíncronas: Escribe una función
+          esperarYSaludar que acepte dos parámetros: un nombre y una función de
+          callback. La función debe esperar 2 segundos y luego invocar la
+          función de callback, pasando el nombre como parámetro.
+        </p>
+        <pre><code>
+    const waitAndGreet = (name, callback) => {
+        setTimeout(() => {
+            return callback(name);
+        }, 2000);
+    };
+    const sayHiTo = (name) => {
+        console.log(`Hi ${name}`);
+    };
+    waitAndGreet("Tom", sayHiTo);
+        </code></pre>
+        <p>
+          Ex 4: Callbacks con arrays: Escribe una función procesarElementos que
+          acepte dos parámetros: un array y una función de callback. La función
+          procesarElementos debe invocar la función de callback para cada
+          elemento del array.
+        </p>
+        <pre><code>
+    const processElements = (nums, plusOne) => {
+        nums.forEach(num => {
+            plusOne(num)
+        });
+    };
+    const plusOne = (num) => {
+        console.log(num+1)
+    };
+    processElements([1, 2, 3], plusOne);
+        </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 5: Escribe una función procesarCadena que acepte dos parámetros:
+          una cadena de caracteres y una función de callback. La función
+          procesarCadena debe convertir la cadena a mayúsculas y luego invocar
+          la función de callback con la cadena transformada.
+        </p>
+        <pre><code>
+    const processString = (str, toAllCaps) => {
+        return toAllCaps(str);
+    };
+    const toAllCaps = (str) => {
+        console.log(str.toUpperCase());
+    };
+    processString("Hello World!", toAllCaps);
+        </code></pre>
+      </section>
+      <section id="RestSpreadOperators">
+        <h2>Rest & Spread Operators</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Operador Spread en Arrays: Crea dos arrays, array1 y array2.
+          Utiliza el operador spread para crear un tercer array que contenga
+          todos los elementos de array1 y array2.
+        </p>
+        <pre><code>
+    const arr1 = [1,2,3,4,5];
+    const arr2 = [6,7,8,9];
+    const arr3 = [...arr1, ...arr2];
+        </code></pre>
+        <p>
+          Ex 2: Operador Rest en Funciones: Crea una función 'suma' que utilice
+          el operador rest para aceptar un número indeterminado de argumentos y
+          retornar su suma.
+        </p>
+        <pre><code>
+    const sum = (...nums) => {
+        let total = 0;
+        for (let i = 0; i< nums.length; i++) {
+            total += nums[i]
+        }
+        return total;
+    };
+        </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 3: Copiando objetos con Spread: Crea un objeto 'objeto1'. Luego,
+          crea un segundo objeto, 'objeto2', que sea una copia de 'objeto1'
+          utilizando el operador spread. Cambia una propiedad de 'objeto2' y
+          verifica que 'objeto1' no ha cambiado.
+        </p>
+        <pre><code>
+    const person = {
+        name: 'Tom'
+        }
+    const state = {
+        ...person,
+        active: true
+        }
+    state.active = false;
+    console.log(state); // {name: "Tom", active: false}
+        </code></pre>
+        <p>
+          Ex 4: Rest en Desestructuración: Crea un array con varios elementos.
+          Utiliza desestructuración y el operador rest para asignar los primeros
+          dos elementos a variables, y luego asignar el resto de los elementos a
+          una tercera variable.
+        </p>
+        <pre><code>
+    const user = ["Tom", "White", '1990', 'Londres'];
+    const [name, surname, ...moreInfo] = user;
+        </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 5: Spread en Funciones: Crea una función que acepte tres
+          argumentos. Luego, crea un array con tres elementos y llama a la
+          función utilizando el operador spread con este array.
+        </p>
+        <pre><code>
+    const sumAllNums = (a,b,c) => {
+        return a + b + c;
+    }
+    const nums = [5,7,3]
+    console.log(sumAllNums(...nums)); // 15
+        </code></pre>
+        <p>
+          Ex 6: Fusionando Objetos con Spread: Crea dos objetos con propiedades
+          diferentes. Utiliza el operador spread para fusionar estos dos objetos
+          en uno nuevo.
+        </p>
+        <pre><code>
+    const movie = {
+        title: 'Inception',
+        year: 2010,
+        genre: 'Sci-Fi'
+        };
+    const director = {
+        name: 'Christopher Nolan',
+        birthYear: 1970,
+        awards: 5
+        };
+    const moviesDate = {...movie, ...director};
+        </code></pre>
+      </section>
+      <section id="ArrayTransformations">
+        <h2>Array Transformations</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Map: Tienes un array de números [1, 2, 3, 4]. Crea un nuevo
+          array que contenga el cuadrado de cada número.
+        </p>
+        <pre><code>
+    const numbers = [1, 2, 3, 4];
+    const squareOfNumbers = 
+    numbers.map((num) => (num * num));
+        </code></pre>
+        <p>
+          Ex 2: Filter: Tienes un array de números [1, 2, 3, 4]. Crea un nuevo
+          array que solo contenga los números pares.
+        </p>
+        <pre><code>
+    const evenNumbers = 
+    numbers.filter((num) => num % 2 == 0);
+        </code></pre>
+        <p>
+          Ex 3: Find: Tienes un array de números [1, 10, 8, 11]. Utiliza la
+          función find para encontrar el primer número que sea mayor que 10.
+        </p>
+        <pre><code>
+    const arrOfNums = [1, 10, 8, 11];
+    const moreTheTen = arrOfNums.find((num) => num > 10);
+        </code></pre>
+        <p>
+          Ex 4: Reduce: Tienes un array de números [13, 7, 8, 21]. Usa la
+          función reduce para calcular la suma total de los números.
+        </p>
+        <pre><code>
+    const arrOfNums2 = [13, 7, 8, 21];
+    const sumAllNumbers = 
+    arrOfNums2.reduce((acc, num) => acc + num, 0);
+        </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 5: Dado un array "[1, 3, 7, 10, 15, 17, 11, 5, 8, 12, 9]", crea una
+          función en una sola línea que haga lo siguiente: - Filtra los números
+          mayores o iguales a 10. - Multiplica cada número filtrado por 2. -
+          Calcula la suma de los números filtrados y multiplicados por 2. - La
+          función debe retornar el resultado de la suma.
+        </p>
+        <pre><code>
+ const arrOfNums3 = [1, 3, 7, 10, 15, 17, 11, 5, 8, 12, 9];
+    const transformedArr = arrOfNums3
+    .filter((num) => num >= 10)
+    .map((num) => num * 2)
+    .reduce((acc, num) => acc + num, 0);
+        </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 6: Every / Some: Usa every y some para determinar si todos o
+          algunos de los elementos del array [11, 12, 13, 14] son mayores que
+          10, respectivamente.
+        </p>
+        <pre><code>
+    const arrOfNums4 = [11, 12, 13, 14];
+  console.log(arrOfNums4.every(num => num > 10)) // true
+  console.log(arrOfNums4.some(num => num > 10)) //true  
+        </code></pre>
+      </section>
+      <section id="ArrayLoops">
+        <h2>Array Loops</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: forEach: Tienes un array de nombres. Utiliza forEach para
+          imprimir cada nombre en la consola;
+        </p>
+        <pre><code>
+    let noms = ["Anna", "Bernat", "Clara"];
+    noms.forEach((nom) => console.log(nom));
+        </code></pre>
+        <p>
+          Ex 2: for-of: Tienes un array de nombres. Utiliza un bucle for-of para
+          imprimir cada nombre en la consola;
+        </p>
+        <pre><code>
+    for (let nom of noms) {
+        console.log("Hi " + nom);
+    };
+        </code></pre>
+        <p>
+          Ex 3: filter: Tienes un array de números. Utiliza filter para crear un
+          nuevo array que solo contenga los números pares.
+        </p>
+        <pre><code>
+ let numbersArr = [1, 2, 3, 4, 5, 6];
+ let onlyEven = numbersArr.filter((num) => num % 2 == 0);
+ console.log(onlyEven);
+        </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 4: for-in: Tienes un objeto con pares clave-valor: let obj = { nom:
+          'Ona', edat: 25, ciutat: 'Barcelona' }. Utiliza un bucle for-in para
+          imprimir en la consola cada clave y su valor correspondiente.
+        </p>
+        <pre><code>
+ let obj = { nom: "Ona", edat: 25, ciutat: "Barcelona" };
+ for (let prop in obj) {
+   console.log(`${prop}: ${obj[prop]}`);
+ };
+        </code></pre>
+        <p>
+          Ex 5: for-of con break: Tienes un array de números. Utiliza un bucle
+          for-of para imprimir en la consola los números hasta encontrar el
+          número 5, luego detén el bucle.
+        </p>
+        <pre><code>
+    let numbersArr2 = [1, 2, 3, 4, 5, 6];
+        for (let num of numbersArr2) {
+            console.log(num);
+            if (num >= 5) {
+            break;
+        }
+    }
+        </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 6: for-of con index: Utiliza un bucle for-of para imprimir en la
+          consola cada elemento del array y su posición (índice): let nombres =
+          ['Anna', 'Bernat', 'Clara'];
+        </p>
+        <pre><code>
+    let names = ["Anna", "Bernat", "Clara"];
+    for (let [index, name] of names.entries()) {
+        console.log(`name: ${name} -- index: ${index}`);
+    }
+        </code></pre>
+      </section>
+      <section id="PromisesAsync/Await">
+        <h2>Promises & Async/Await</h2>
+        <h4>Nivel 1</h4>
+        <p>
+          Ex 1: Creación de una Promesa: Crea una promesa que se resuelva
+          después de 2 segundos y que retorne la cadena de texto 'Hola, mundo'.
+        </p>
+        <pre><code>
+    const greeting = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Hola Mundo!");
+        }, 2000);
+    });
+        </code></pre>
+        <p>
+          Ex 2: Uso de una Promesa: Utiliza la promesa creada en el ejercicio
+          anterior. Crea un .then que imprima el resultado en la consola.
+        </p>
+        <pre><code>
+    greeting.then(console.log);
+        </code></pre>
+        <p>
+          Ex 3: Promesa con reject: Crea una promesa que se resuelva después de
+          2 segundos si la entrada es igual a 'Hola', y que se rechace si la
+          entrada es cualquier otra cosa.
+        </p>
+        <pre><code>
+  const isCorrect = (input) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (input === "Hola") {
+            resolve(input + ", nice to see you :)");
+          } else {
+            reject(new Error(`${input} is not correct!`));
+          }
+        }, 2000);
+    });
+  };
+  isCorrect("Hla")
+    .then((msg) => console.log(msg))
+    .catch((msg) => console.log(msg));
+        </code></pre>
+        <p>
+          Ex 4: Uso de async/await: Escribe una función asíncrona que utilice la
+          función await para esperar el resultado de la promesa creada en el
+          ejercicio 1, y que luego imprima ese resultado en la consola.
+        </p>
+        <pre><code>
+    async function greetingFrist() {
+        const msg = await greeting;
+        console.log(msg);
+    };
+        </code></pre>
+        <h4>Nivel 2</h4>
+        <p>
+          Ex 5: Gestión de errores con async/await: Modifica la función del
+          ejercicio 4 para que capture cualquier posible error utilizando un
+          bloque try/catch.
+        </p>
+        <pre><code>
+    async function greetingFrist() {
+        try {
+            const msg = await greeting;
+            console.log(msg);
+        } catch (error) {
+            console.error('Error!', error)
+        }
+    };
+        </code></pre>
+        <h4>Nivel 3</h4>
+        <p>
+          Ex 6: Promise.all: Crea dos promesas que se resuelvan después de 2 y 3
+          segundos, respectivamente. Utiliza Promise.all para esperar a que
+          ambas promesas se resuelvan, e imprime los resultados en la consola.
+        </p>
+        <pre><code>
+    const promise1 = new Promise((resolve) => { 
+        setTimeout(()=>{ 
+            resolve('One...'); 
+        }, 2000); 
+    }); 
+    const promise2 = new Promise((resolve) => { 
+        setTimeout(()=>{ 
+            resolve('Two...'); 
+        }, 3000); 
+    });     
+    async function runPromises(){ 
+        const result = 
+        await Promise.all([promise1, promise2]); 
+        console.log(result);
+    };
+        </code></pre>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

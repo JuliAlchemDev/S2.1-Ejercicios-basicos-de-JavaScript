@@ -1,0 +1,93 @@
+:root {
+  --font-color: rgb(50, 51, 48);
+  --background-color: #f0f0f0;
+  --font-primary: "Fira Sans", sans-serif;
+  --font-secondary: "Fira Code", monospace;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background-color: rgba(240, 240, 240, 0.8);
+  color: var(--font-color);
+  font-family: var(--font-primary);
+  scroll-padding-top: 135px;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 15px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  background: rgb(255, 221, 51);
+  /* background: url('https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png') no-repeat center center/cover; */
+}
+header {
+  text-align: center;
+  position: sticky;
+  top: 0;
+  width: 992px;
+  background: rgba(255, 221, 51, 0.8);
+
+  border-bottom: 10px solid rgba(240, 240, 240, 0.8);
+  /* z-index: 1000; */
+}
+h1 {
+  padding: 15px;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  background: rgb(255, 221, 51);
+}
+li {
+  padding: 5px;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+a:active,
+a:hover {
+  background: rgba(240, 240, 240, 0.8);
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+}
+
+main {
+  width: 992px;
+  text-align: justify;
+  background-color: rgba(240, 240, 240, 0.8);
+  padding: 25px;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+h2 {
+  border-bottom: 3px solid rgb(255, 221, 51);
+  grid-column: span 2;
+}
+h4 {
+  grid-column: span 2;
+}
+p {
+  padding: 10px;
+}
+pre {
+  border-radius: 5px;
+  background: rgb(255, 221, 51);
+  color: rgb(50, 51, 48);
+  max-width: 500px;
+}
+code {
+  font-size: 0.85rem;
+  font-family: "Fira Code", monospace;
+}
