@@ -1,5 +1,5 @@
 ## Ejercicios básicos de JavaScript
-🚀 [DEMO]()
+🚀 [DEMO](https://julialchemdev.github.io/S2.1-Ejercicios-basicos-de-JavaScript/)
 
 Desarrollado como parte del curso de React en Barcelona Activa, este proyecto tiene como propósito repasar y practicar los conceptos básicos de JavaScript.
 
